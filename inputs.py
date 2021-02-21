@@ -1,32 +1,26 @@
 from tkinter import *
+import cnr
 
 class Inputs(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
         self.parent = parent
 
-        self.input1 = InputRow(self)
-        self.input2 = InputRow(self)
-        self.evalbutton = Button(self, text="Evaluate", command=self.getResults)
+        self.input1 = cnr.ComplexNumRow(self, True, "Input 1")
+        self.input2 = cnr.ComplexNumRow(self, True, "Input 2")
 
         self.input1.pack(side=TOP)
         self.input2.pack(side=TOP)
-        self.evalbutton.pack(side=TOP)
 
-    def getResults(self):
-        print("hi")
+    def getReal1(self):
+        return self.input1.getRealInput()
 
-class InputRow(Frame):
-    def __init__(self, parent):
-        Frame.__init__(self, parent)
-        self.parent = parent
+    def getImag1(self):
+        return self.input1.getImagInput()
 
-        self.realinput = Text(self, height=1, width=6)
-        self.imaginput = Text(self, height=1, width=6)
-        self.plus = Label(self, text="+")
-        self.i = Label(self, text="i")
+    def getReal2(self):
+        return self.input2.getRealInput()
 
-        self.realinput.pack(side=LEFT)
-        self.plus.pack(side=LEFT)
-        self.imaginput.pack(side=LEFT)
-        self.i.pack(side=LEFT)
+    def getImag2(self):
+        return self.input2.getImagInput()
+
